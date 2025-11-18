@@ -1,0 +1,57 @@
+# ESP-IDF Build System
+build/
+sdkconfig.old
+*.pyc
+__pycache__/
+
+# ESP-IDF Managed Components
+managed_components/
+dependencies.lock
+
+# Build artifacts
+*.bin
+*.elf
+*.map
+*.o
+*.a
+*.d
+
+# Flash download tool
+flash_project_args
+
+# IDE files
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# OS files
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Python virtual environment
+venv/
+.venv/
+env/
+
+# Test logs and data
+test_logs/
+*.log
+
+# Temporary files
+*.tmp
+*.bak
+*.orig
+
+# Documentation build
+docs/_build/
+docs/.doctrees/
+
+# Keep important documentation
+!docs/*.md
+!docs/*.pdf
+!*.md
+!README.md
+
