@@ -9,6 +9,7 @@ idf_component_register(
         nvs_flash
         esp_timer
         esp_pm
+        spi_flash
         rtc_driver
         espnow_sync
         sleep_manager

@@ -71,18 +71,18 @@ typedef struct {
 
 /**
  * @brief Initialize RTC driver
- * 
+ *
  * @param config RTC configuration
  * @return esp_err_t ESP_OK on success
  */
-esp_err_t rtc_init(const rtc_config_t *config);
+esp_err_t rtc_rv3028_init(const rtc_config_t *config);
 
 /**
  * @brief Deinitialize RTC driver
- * 
+ *
  * @return esp_err_t ESP_OK on success
  */
-esp_err_t rtc_deinit(void);
+esp_err_t rtc_rv3028_deinit(void);
 
 /**
  * @brief Set RTC time

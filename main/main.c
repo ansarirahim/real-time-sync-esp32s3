@@ -18,6 +18,8 @@
 #include "freertos/FreeRTOS.h"
 #include "freertos/task.h"
 #include "esp_system.h"
+#include "esp_chip_info.h"
+#include "esp_flash.h"
 #include "esp_log.h"
 #include "nvs_flash.h"
 #include "driver/gpio.h"
@@ -110,8 +112,12 @@ void app_main(void)
              (chip_info.features & CHIP_FEATURE_BT) ? "/BT" : "",
              (chip_info.features & CHIP_FEATURE_BLE) ? "/BLE" : "");
     ESP_LOGI(TAG, "Silicon revision: %d", chip_info.revision);
-    ESP_LOGI(TAG, "Flash: %dMB %s",
-             spi_flash_get_chip_size() / (1024 * 1024),
+
+    // Get flash size
+    uint32_t flash_size = 0;
+    esp_flash_get_size(NULL, &flash_size);
+    ESP_LOGI(TAG, "Flash: %luMB %s",
+             flash_size / (1024 * 1024),
              (chip_info.features & CHIP_FEATURE_EMB_FLASH) ? "embedded" : "external");
     ESP_LOGI(TAG, "Free heap: %lu bytes", esp_get_free_heap_size());
 
@@ -124,7 +130,7 @@ void app_main(void)
         .int_pin = GPIO_RTC_INT,
         .i2c_freq_hz = 100000
     };
-    ESP_ERROR_CHECK(rtc_init(&rtc_cfg));
+    ESP_ERROR_CHECK(rtc_rv3028_init(&rtc_cfg));
 
     if (rtc_is_available()) {
         ESP_LOGI(TAG, "RTC hardware detected!");

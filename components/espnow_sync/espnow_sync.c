@@ -13,9 +13,14 @@
 #include "esp_log.h"
 #include "esp_crc.h"
 #include "nvs_flash.h"
+#include "esp_mac.h"
 #include <string.h>
 
 static const char *TAG = "ESPNOW_SYNC";
+
+// MAC address format string for ESP-IDF v5.5+
+#define MACSTR_FMT "%02x:%02x:%02x:%02x:%02x:%02x"
+#define MAC2STR_ARG(a) (a)[0], (a)[1], (a)[2], (a)[3], (a)[4], (a)[5]
 
 static espnow_config_t espnow_config;
 static bool espnow_initialized = false;
@@ -47,9 +52,9 @@ static void espnow_recv_cb(const esp_now_recv_info_t *recv_info, const uint8_t *
     }
 
     uint8_t packet_type = data[0];
-    
-    ESP_LOGI(TAG, "Received packet type: 0x%02X, len: %d from " MACSTR,
-             packet_type, len, MAC2STR(recv_info->src_addr));
+
+    ESP_LOGI(TAG, "Received packet type: 0x%02X, len: %d from " MACSTR_FMT,
+             packet_type, len, MAC2STR_ARG(recv_info->src_addr));
 
     switch (packet_type) {
         case ESPNOW_PKT_TIME_SYNC: {
@@ -127,11 +132,11 @@ static void espnow_recv_cb(const esp_now_recv_info_t *recv_info, const uint8_t *
 }
 
 /**
- * @brief ESP-NOW send callback
+ * @brief ESP-NOW send callback (ESP-IDF v5.5+ signature)
  */
-static void espnow_send_cb(const uint8_t *mac_addr, esp_now_send_status_t status) {
-    ESP_LOGI(TAG, "Send to " MACSTR " %s",
-             MAC2STR(mac_addr),
+static void espnow_send_cb(const wifi_tx_info_t *tx_info, esp_now_send_status_t status) {
+    ESP_LOGI(TAG, "Send to " MACSTR_FMT " %s",
+             MAC2STR_ARG(tx_info->des_addr),
              status == ESP_NOW_SEND_SUCCESS ? "SUCCESS" : "FAILED");
 }
 
@@ -178,7 +183,7 @@ esp_err_t espnow_sync_init(const espnow_config_t *config) {
     if (config->role == ESPNOW_ROLE_SENSOR) {
         // Sensor: add gateway as peer
         memcpy(peer.peer_addr, config->gateway_mac, 6);
-        ESP_LOGI(TAG, "Adding gateway peer: " MACSTR, MAC2STR(config->gateway_mac));
+        ESP_LOGI(TAG, "Adding gateway peer: " MACSTR_FMT, MAC2STR_ARG(config->gateway_mac));
     } else {
         // Gateway: add broadcast address for receiving from all sensors
         memset(peer.peer_addr, 0xFF, 6);

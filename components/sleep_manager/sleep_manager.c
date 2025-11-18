@@ -10,6 +10,7 @@
 #include "sleep_manager.h"
 #include "esp_log.h"
 #include "esp_sleep.h"
+#include "esp_timer.h"
 #include "driver/rtc_io.h"
 #include <string.h>
 
@@ -195,8 +196,9 @@ void sleep_print_wake_reason(void) {
 }
 
 uint64_t sleep_get_total_sleep_time_us(void) {
+    // In ESP-IDF v5.5+, use esp_timer_get_time() instead of esp_rtc_get_time_us()
     return esp_sleep_get_wakeup_cause() != ESP_SLEEP_WAKEUP_UNDEFINED
-           ? esp_rtc_get_time_us()
+           ? esp_timer_get_time()
            : 0;
 }
 

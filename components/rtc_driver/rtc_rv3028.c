@@ -59,7 +59,7 @@ static esp_err_t rtc_read_regs(uint8_t reg, uint8_t *data, size_t len) {
                                         pdMS_TO_TICKS(1000));
 }
 
-esp_err_t rtc_init(const rtc_config_t *config) {
+esp_err_t rtc_rv3028_init(const rtc_config_t *config) {
     if (config == NULL) {
         ESP_LOGE(TAG, "Config is NULL");
         return ESP_ERR_INVALID_ARG;
@@ -108,7 +108,7 @@ esp_err_t rtc_init(const rtc_config_t *config) {
     return ESP_OK;
 }
 
-esp_err_t rtc_deinit(void) {
+esp_err_t rtc_rv3028_deinit(void) {
     if (!rtc_initialized) {
         return ESP_OK;
     }
