@@ -1,204 +1,177 @@
-# ESP-NOW RTC Synchronization Project — Complete Package for Ridvan
+# ESP32-S3 Real-Time Sync Engineering
 
-## 📦 Package Contents
+ESP-NOW / ESP32-C3 / ESP32-S3 Real-Time Synchronization Project
 
-This package contains all the diagrams, documentation, and deliverables list requested by Ridvan for the ESP-NOW RTC synchronization project.
+## Project Overview
 
----
-
-## 📊 Draw.io Diagrams (Ready to Open)
-
-### 1. **ESP32_RTC_System_Architecture.drawio**
-   - **System architecture diagram** showing:
-     - Gateway node (ESP32-S3) with RTC
-     - Sensor nodes (ESP32-C3/S3) with RTC
-     - I²C connections between ESP32 and RTC
-     - Interrupt (INT) pin for wake-up signaling
-     - ESP-NOW wireless communication
-     - Synchronization timing flow
-   - **How to use:** Open with [draw.io](https://app.diagrams.net/) or import into diagrams.net
-
-### 2. **ESP32_RTC_Timing_Sequence.drawio**
-   - **Detailed timing sequence diagram** showing:
-     - Phase 1: Initial synchronization (power-on)
-     - Phase 2: Deep sleep (1 hour)
-     - Phase 3: Synchronized wake-up (±50-100ms skew)
-     - Phase 4: Communication window (200-500ms)
-     - Phase 5: Time correction (optional)
-     - Phase 6: Return to deep sleep
-     - Complete cycle with performance metrics
-   - **How to use:** Open with [draw.io](https://app.diagrams.net/)
-
-### 3. **ESP32_RTC_Hardware_Wiring.drawio**
-   - **Hardware wiring diagram** showing:
-     - Pin-to-pin connections (ESP32 ↔ RTC)
-     - Pull-up resistor placement (4.7kΩ for I²C, 10kΩ for INT)
-     - Decoupling capacitor (100nF)
-     - Power supply connections (3.3V, GND)
-     - Connection summary table
-   - **How to use:** Open with [draw.io](https://app.diagrams.net/)
+This project implements a low-power wireless sensor network using ESP32 microcontrollers with precise time synchronization via external RTC modules. The system uses ESP-NOW protocol for communication and achieves sub-second wake-up synchronization across multiple sensor nodes.
 
 ---
 
-## 📄 Documentation Files
+## System Architecture
 
-### 4. **DELIVERABLES.md**
-   - **Complete list of all project deliverables** organized by milestone:
-     - Milestone 1: Technical reports, schematics, power analysis, BOM
-     - Milestone 2: Firmware source code, test logs, documentation
-     - Milestone 3: Long-duration tests, power measurements, final binaries
-   - File organization structure
-   - Post-delivery support details
+### Hardware Components
+- Gateway: ESP32-S3 with RV-3028-C7 RTC module
+- Sensors: ESP32-C3/S3 with RV-3028-C7 RTC modules
+- Communication: ESP-NOW wireless protocol
+- Power: Deep sleep mode with RTC alarm wake
 
-### 5. **HARDWARE_CONNECTION_GUIDE.md**
-   - **Detailed hardware integration guide:**
-     - RTC recommendation (RV-3028-C7) with technical justification
-     - Pin connection tables for ESP32-C3 and ESP32-S3
-     - Schematic diagrams (text-based)
-     - Power supply considerations
-     - I²C configuration details
-     - Bill of Materials (BOM) with supplier links
-     - Assembly instructions
-     - Troubleshooting guide
-
-### 6. **RESPONSE_TO_RIDVAN.md**
-   - **Professional response** summarizing:
-     - System architecture overview
-     - Deliverables summary
-     - Hardware recommendations
-     - Next steps and project terms
+### Key Features
+- Ultra-low power consumption (< 20 µA in deep sleep)
+- High-precision timekeeping (±1 ppm accuracy)
+- Synchronized wake-up across all nodes
+- Wide temperature range operation (-40°C to +85°C)
+- Configurable wake intervals (default: 1 hour)
 
 ---
 
-## 🎯 Key Features of the Solution
+## Documentation
 
-### External RTC (RV-3028-C7)
-- **Ultra-low power:** 45 nA standby current
-- **High accuracy:** ±1 ppm with automatic temperature compensation
-- **Wide temperature range:** -40°C to +85°C (perfect for Farmakit application)
-- **Integrated crystal:** No external 32.768 kHz crystal needed
-- **I²C interface:** Simple integration with ESP32
+### System Diagrams
+1. ESP32_RTC_System_Architecture.drawio - System architecture and component connections
+2. ESP32_RTC_Timing_Sequence.drawio - Timing sequence and synchronization flow
+3. ESP32_RTC_Hardware_Wiring.drawio - Hardware wiring and pin connections
+
+Open with draw.io (https://app.diagrams.net/)
+
+### Technical Documentation
+- DELIVERABLES.md - Complete list of project deliverables
+- HARDWARE_CONNECTION_GUIDE.md - RTC integration and pin connections
+- BUILD_SUCCESS_REPORT.md - Build status and API compatibility fixes
+- MILESTONE2_TEST_RESULTS.md - Component testing and verification results
+
+---
+
+## Firmware Components
+
+### RTC Driver (components/rtc_driver)
+- I2C communication with RV-3028-C7
+- Unix timestamp read/write
+- Alarm configuration
+- Stub mode for development without hardware
+
+### ESP-NOW Sync (components/espnow_sync)
+- Time synchronization protocol
+- Sensor data transmission
+- Packet structures with checksums
+- Gateway and sensor role management
+
+### Sleep Manager (components/sleep_manager)
+- Deep sleep with RTC alarm wake (ext0)
+- Button wake for gateway (ext1)
+- Absolute timestamp scheduling
+- Wake source detection
+
+### Main Application (main)
+- Gateway mode: Listen and broadcast time sync
+- Sensor mode: Wake, measure, transmit, sleep
+- Configurable device role and sensor ID
+
+---
+
+## Build Instructions
+
+### Prerequisites
+- ESP-IDF v5.5.1 or later
+- ESP32-S3 development board
+- USB cable for programming
+
+### Build and Flash
+```bash
+# Set target
+idf.py set-target esp32s3
+
+# Build firmware
+idf.py build
+
+# Flash to device
+idf.py -p COM5 flash monitor
+```
+
+### Configuration
+Edit main/main.c to configure:
+- DEVICE_ROLE (ESPNOW_ROLE_GATEWAY or ESPNOW_ROLE_SENSOR)
+- SENSOR_ID (1, 2, or 3)
+- WAKE_INTERVAL_SEC (default: 3600)
+- GPIO pins for RTC connection
+
+---
+
+## Technical Specifications
+
+### RTC Module (RV-3028-C7)
+- Power consumption: 45 nA typical
+- Accuracy: ±1 ppm with temperature compensation
+- Temperature range: -40°C to +85°C
+- Interface: I2C (100 kHz standard mode)
+- Integrated 32.768 kHz crystal
 
 ### Synchronization Performance
-- **Wake-up skew:** ±50-100 ms (vs. several seconds with internal RTC)
-- **Reliable communication:** 200-500 ms ESP-NOW window
-- **Automatic time correction:** Gateway can adjust sensor clocks if drift detected
-- **No manual re-sync:** System maintains sync indefinitely
+- Wake-up skew: ±50-100 ms
+- Communication window: 200-500 ms
+- Time correction: Automatic via gateway
+- Long-term stability: Maintains sync indefinitely
 
-### Power Optimization
-- **Deep sleep current:** <100 µA (ESP32 + RTC combined)
-- **Extended battery life:** Months to years depending on wake interval
-- **Optimized wake window:** Minimal active time for maximum efficiency
+### Power Consumption
+- Deep sleep: < 20 µA (ESP32 + RTC)
+- Active time: < 1 second per wake cycle
+- Battery life: Months to years (depending on wake interval)
 
----
-
-## 📋 Project Summary
-
-**Problem:**
-- ESP32 internal RTC drifts significantly during long deep-sleep cycles
-- Clock drift causes sensor nodes and gateway to miss ESP-NOW communication windows
-- Worse at low temperatures (Farmakit operates in agricultural environments)
-- All nodes (including gateway) need to sleep to maximize battery life
-
-**Solution:**
-- Add external RTC module (RV-3028-C7) to each node (gateway + sensors)
-- RTC maintains accurate time during deep sleep (<100 nA power)
-- RTC alarm triggers ESP32 wake-up via interrupt pin on all nodes
-- Gateway synchronizes all sensor clocks via ESP-NOW during brief wake windows
-- All nodes (including gateway) sleep between communication windows
-- Wake-up skew reduced from seconds to ±50-100 milliseconds
-
-**Cost per Node:**
-- RV-3028-C7 breakout board: ~$6-8
-- Resistors + capacitors: ~$0.30
-- **Total added cost: ~$6-8 per node**
+### Hardware Cost
+- RV-3028-C7 breakout board: $6-8 per unit
+- Resistors and capacitors: $0.30 per unit
+- Total added cost: $6-8 per node
 
 ---
 
-## 🚀 How to Use These Files
+## Project Status
 
-### For Ridvan (Client):
-1. **Open the Draw.io diagrams:**
-   - Go to [app.diagrams.net](https://app.diagrams.net/)
-   - Click "Open Existing Diagram"
-   - Select the `.drawio` files from this package
-   - Review the system architecture, timing sequence, and wiring diagrams
+### Milestone 1 - Complete
+- Hardware analysis and RTC recommendation
+- Electrical connection plan
+- Power analysis and battery life projection
+- Bill of Materials (BOM)
 
-2. **Review the deliverables list:**
-   - Open `DELIVERABLES.md`
-   - Verify that all expected deliverables are listed
-   - Confirm the file organization structure
+### Milestone 2 - Complete
+- RTC driver implementation
+- ESP-NOW synchronization protocol
+- Sleep manager with wake scheduling
+- Main application (gateway and sensor modes)
+- Build system configuration
+- Runtime testing and verification
 
-3. **Review the hardware guide:**
-   - Open `HARDWARE_CONNECTION_GUIDE.md`
-   - Check the RTC recommendation and specifications
-   - Review the pin connections and BOM
-
-4. **Provide feedback or approval:**
-   - If everything looks good, we can proceed with Milestone 1
-   - If you have questions or need changes, let me know
-
-### For Development (Abdul):
-- Use these diagrams as reference during implementation
-- Follow the hardware wiring diagram for physical connections
-- Implement firmware according to the timing sequence diagram
-- Deliver files according to the structure in `DELIVERABLES.md`
+### Milestone 3 - Pending
+- RTC hardware integration
+- Field simulation and testing
+- Power optimization
+- Final delivery
 
 ---
 
-## 📞 Next Steps
-
-**If Ridvan approves:**
-1. **Start Milestone 1** (2 days, $40):
-   - Analyze current schematic
-   - Finalize RTC recommendation
-   - Create detailed electrical connection plan
-   - Provide power analysis and battery life projection
-
-2. **Ridvan provides:**
-   - Current schematic (or description of ESP32-C3/S3 hardware setup)
-   - Any specific requirements or constraints
-
-3. **Proceed with development:**
-   - Milestone 2: Firmware integration (4-5 days, $70)
-   - Milestone 3: Field simulation & optimization (3 days, $40)
-
----
-
-## 📊 Project Terms
-
-- **Total Cost:** $150 (Fixed Price)
-- **Delivery Time:** 9-10 days total
-- **Payment:** Milestone-based via Freelancer.com
-- **Post-Delivery Support:** 7 days of email/chat support
-
----
-
-## 📧 Contact
-
-**Abdul Raheem Ansari**  
-Firmware & Embedded Systems Engineer  
-ESP32 / Low Power / RTC Synchronization Specialist
-
----
-
-## 📝 File List
+## Repository Structure
 
 ```
 ridvan/
-├── README.md (this file)
-├── start.md (original conversation)
-├── DELIVERABLES.md
-├── HARDWARE_CONNECTION_GUIDE.md
-├── RESPONSE_TO_RIDVAN.md
-├── GATEWAY_SLEEP_CLARIFICATION.md (gateway sleep behavior explained)
-├── BUTTON_WAKE_SOLUTION.md (button wake-up without breaking sync)
-├── ESP32_RTC_System_Architecture.drawio
-├── ESP32_RTC_Timing_Sequence.drawio
-└── ESP32_RTC_Hardware_Wiring.drawio
+├── components/
+│   ├── rtc_driver/          # RV-3028-C7 RTC driver
+│   ├── espnow_sync/         # ESP-NOW communication
+│   └── sleep_manager/       # Power management
+├── main/                    # Main application
+├── docs/                    # Documentation
+│   ├── milestone1/          # M1 deliverables
+│   └── milestone2/          # M2 deliverables
+├── BUILD_SUCCESS_REPORT.md  # Build status
+├── MILESTONE2_TEST_RESULTS.md # Test results
+└── README.md                # This file
 ```
 
 ---
 
-**All files are ready for review and can be sent to Ridvan immediately!**
+## Contact
+
+Abdul Raheem Ansari
+Email: ansarirahim1@gmail.com
+WhatsApp: +91 9024304883
+
+
 
