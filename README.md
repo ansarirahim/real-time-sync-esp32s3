@@ -169,9 +169,14 @@ ridvan/
 
 ## Contact
 
-Abdul Raheem Ansari
-Email: ansarirahim1@gmail.com
-WhatsApp: +91 9024304883
+**Author:** A.R. Ansari
+**Email:** ansarirahim1@gmail.com
+**WhatsApp:** +919024304833
+**LinkedIn:** https://www.linkedin.com/in/abdul-raheem-ansari-a6871320/
+
+---
+
+**Copyright:** © 2024 A.R. Ansari. All rights reserved.
 
 
 

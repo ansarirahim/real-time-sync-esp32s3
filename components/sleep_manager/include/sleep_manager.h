@@ -1,12 +1,21 @@
 /**
  * @file sleep_manager.h
  * @brief Deep Sleep Management for ESP32
- * 
- * @author Abdul Raheem Ansari
+ *
+ * This component manages deep sleep modes with RTC alarm wake-up (ext0) and
+ * button wake-up (ext1). Provides absolute timestamp scheduling and wake
+ * source detection for power-optimized sensor networks.
+ *
+ * @author A.R. Ansari
  * @email ansarirahim1@gmail.com
- * @date 2024-11-18
- * 
- * This component manages deep sleep modes with RTC wake-up and button wake-up.
+ * @date November 18, 2024
+ * @version 1.0.0
+ *
+ * @contact
+ * WhatsApp: +919024304833
+ * LinkedIn: https://www.linkedin.com/in/abdul-raheem-ansari-a6871320/
+ *
+ * @copyright Copyright (c) 2024 A.R. Ansari. All rights reserved.
  */
 
 #ifndef SLEEP_MANAGER_H

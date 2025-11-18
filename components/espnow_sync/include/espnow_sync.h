@@ -1,13 +1,21 @@
 /**
  * @file espnow_sync.h
  * @brief ESP-NOW Time Synchronization Protocol
- * 
- * @author Abdul Raheem Ansari
- * @email ansarirahim1@gmail.com
- * @date 2024-11-18
- * 
+ *
  * This component implements time synchronization between gateway and sensor nodes
- * using ESP-NOW protocol with RTC-based absolute time scheduling.
+ * using ESP-NOW protocol with RTC-based absolute time scheduling. Provides packet
+ * structures, role management, and callback interfaces for wireless communication.
+ *
+ * @author A.R. Ansari
+ * @email ansarirahim1@gmail.com
+ * @date November 18, 2024
+ * @version 1.0.0
+ *
+ * @contact
+ * WhatsApp: +919024304833
+ * LinkedIn: https://www.linkedin.com/in/abdul-raheem-ansari-a6871320/
+ *
+ * @copyright Copyright (c) 2024 A.R. Ansari. All rights reserved.
  */
 
 #ifndef ESPNOW_SYNC_H

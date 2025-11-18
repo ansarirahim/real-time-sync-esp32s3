@@ -1,5 +1,17 @@
 # Hardware Connection Guide — RTC Integration with ESP32
 
+**Project:** ESP32-S3 Real-Time Sync Engineering
+**Document:** RTC Hardware Integration Guide
+**Date:** November 18, 2024
+**Version:** 1.0.0
+
+**Author:** A.R. Ansari
+**Email:** ansarirahim1@gmail.com
+**WhatsApp:** +919024304833
+**LinkedIn:** https://www.linkedin.com/in/abdul-raheem-ansari-a6871320/
+
+---
+
 ## RTC Module Recommendation: RV-3028-C7
 
 ### Why RV-3028-C7?
@@ -296,4 +308,16 @@ This is a critical design decision for battery-powered operation:
 
 ## Next Steps
 Once hardware is connected, proceed to **Milestone 2** for firmware integration and synchronization protocol implementation.
+
+---
+
+## Document Information
+
+**Author:** A.R. Ansari
+**Email:** ansarirahim1@gmail.com
+**WhatsApp:** +919024304833
+**LinkedIn:** https://www.linkedin.com/in/abdul-raheem-ansari-a6871320/
+**Date:** November 18, 2024
+
+**Copyright:** © 2024 A.R. Ansari. All rights reserved.
 

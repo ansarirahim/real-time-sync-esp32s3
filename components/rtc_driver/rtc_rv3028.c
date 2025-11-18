@@ -1,10 +1,21 @@
 /**
  * @file rtc_rv3028.c
  * @brief RV-3028-C7 Real-Time Clock Driver Implementation
- * 
- * @author Abdul Raheem Ansari
+ *
+ * This file implements the driver for Micro Crystal RV-3028-C7 ultra-low power
+ * real-time clock module with I2C interface. Provides time management, alarm
+ * configuration, and interrupt handling for ESP32 deep sleep wake-up.
+ *
+ * @author A.R. Ansari
  * @email ansarirahim1@gmail.com
- * @date 2024-11-18
+ * @date November 18, 2024
+ * @version 1.0.0
+ *
+ * @contact
+ * WhatsApp: +919024304833
+ * LinkedIn: https://www.linkedin.com/in/abdul-raheem-ansari-a6871320/
+ *
+ * @copyright Copyright (c) 2024 A.R. Ansari. All rights reserved.
  */
 
 #include "rtc_rv3028.h"
@@ -18,14 +29,20 @@ static i2c_port_t rtc_i2c_port = I2C_NUM_0;
 static bool rtc_initialized = false;
 
 /**
- * @brief Convert BCD to decimal
+ * @brief Convert BCD (Binary Coded Decimal) to decimal
+ *
+ * @param bcd BCD value to convert
+ * @return uint8_t Decimal value
  */
 static uint8_t bcd_to_dec(uint8_t bcd) {
     return ((bcd >> 4) * 10) + (bcd & 0x0F);
 }
 
 /**
- * @brief Convert decimal to BCD
+ * @brief Convert decimal to BCD (Binary Coded Decimal)
+ *
+ * @param dec Decimal value to convert
+ * @return uint8_t BCD value
  */
 static uint8_t dec_to_bcd(uint8_t dec) {
     return ((dec / 10) << 4) | (dec % 10);
@@ -33,16 +50,24 @@ static uint8_t dec_to_bcd(uint8_t dec) {
 
 /**
  * @brief Write single byte to RTC register
+ *
+ * @param reg Register address to write to
+ * @param data Data byte to write
+ * @return esp_err_t ESP_OK on success, error code otherwise
  */
 static esp_err_t rtc_write_reg(uint8_t reg, uint8_t data) {
     uint8_t write_buf[2] = {reg, data};
-    return i2c_master_write_to_device(rtc_i2c_port, RV3028_I2C_ADDR, 
-                                      write_buf, sizeof(write_buf), 
+    return i2c_master_write_to_device(rtc_i2c_port, RV3028_I2C_ADDR,
+                                      write_buf, sizeof(write_buf),
                                       pdMS_TO_TICKS(1000));
 }
 
 /**
  * @brief Read single byte from RTC register
+ *
+ * @param reg Register address to read from
+ * @param data Pointer to store read data
+ * @return esp_err_t ESP_OK on success, error code otherwise
  */
 static esp_err_t rtc_read_reg(uint8_t reg, uint8_t *data) {
     return i2c_master_write_read_device(rtc_i2c_port, RV3028_I2C_ADDR,
@@ -52,6 +77,11 @@ static esp_err_t rtc_read_reg(uint8_t reg, uint8_t *data) {
 
 /**
  * @brief Read multiple bytes from RTC registers
+ *
+ * @param reg Starting register address
+ * @param data Pointer to buffer for read data
+ * @param len Number of bytes to read
+ * @return esp_err_t ESP_OK on success, error code otherwise
  */
 static esp_err_t rtc_read_regs(uint8_t reg, uint8_t *data, size_t len) {
     return i2c_master_write_read_device(rtc_i2c_port, RV3028_I2C_ADDR,

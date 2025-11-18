@@ -1,13 +1,21 @@
 /**
  * @file rtc_rv3028.h
  * @brief RV-3028-C7 Real-Time Clock Driver for ESP32
- * 
- * @author Abdul Raheem Ansari
+ *
+ * This driver provides interface for Micro Crystal RV-3028-C7 ultra-low power
+ * real-time clock module with I2C interface. Features include time management,
+ * alarm configuration, Unix timestamp support, and interrupt handling.
+ *
+ * @author A.R. Ansari
  * @email ansarirahim1@gmail.com
- * @date 2024-11-18
- * 
- * This driver provides interface for RV-3028-C7 ultra-low power RTC
- * with ±1 ppm accuracy and integrated crystal oscillator.
+ * @date November 18, 2024
+ * @version 1.0.0
+ *
+ * @contact
+ * WhatsApp: +919024304833
+ * LinkedIn: https://www.linkedin.com/in/abdul-raheem-ansari-a6871320/
+ *
+ * @copyright Copyright (c) 2024 A.R. Ansari. All rights reserved.
  */
 
 #ifndef RTC_RV3028_H

@@ -1,8 +1,15 @@
 # Milestone 2 Test Results
 
-**Date:** November 18, 2024  
-**Project:** ESP32-S3 Real-Time Sync Engineering  
-**Developer:** Abdul Raheem Ansari  
+**Project:** ESP32-S3 Real-Time Sync Engineering
+**Document:** Component Testing and Verification Report
+**Date:** November 18, 2024
+**Version:** 1.0.0
+
+**Author:** A.R. Ansari
+**Email:** ansarirahim1@gmail.com
+**WhatsApp:** +919024304833
+**LinkedIn:** https://www.linkedin.com/in/abdul-raheem-ansari-a6871320/
+
 **Test Environment:** ESP32-S3 (QFN56) rev v0.2, ESP-IDF v5.5.1
 
 ---
@@ -155,7 +162,13 @@ All Milestone 2 deliverables have been implemented and tested successfully. The 
 
 ---
 
-**Test Conducted By:** Abdul Raheem Ansari  
-**Contact:** ansarirahim1@gmail.com  
+## Document Information
+
+**Test Conducted By:** A.R. Ansari
+**Email:** ansarirahim1@gmail.com
+**WhatsApp:** +919024304833
+**LinkedIn:** https://www.linkedin.com/in/abdul-raheem-ansari-a6871320/
 **Date:** November 18, 2024
+
+**Copyright:** © 2024 A.R. Ansari. All rights reserved.
 

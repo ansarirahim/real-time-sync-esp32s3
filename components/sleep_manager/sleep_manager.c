@@ -1,10 +1,21 @@
 /**
  * @file sleep_manager.c
- * @brief Deep Sleep Management Implementation
- * 
- * @author Abdul Raheem Ansari
+ * @brief Deep Sleep Management Implementation for ESP32
+ *
+ * This file implements deep sleep power management with RTC alarm wake (ext0)
+ * and button wake (ext1) support. Provides absolute timestamp scheduling to
+ * prevent clock drift accumulation during sleep cycles.
+ *
+ * @author A.R. Ansari
  * @email ansarirahim1@gmail.com
- * @date 2024-11-18
+ * @date November 18, 2024
+ * @version 1.0.0
+ *
+ * @contact
+ * WhatsApp: +919024304833
+ * LinkedIn: https://www.linkedin.com/in/abdul-raheem-ansari-a6871320/
+ *
+ * @copyright Copyright (c) 2024 A.R. Ansari. All rights reserved.
  */
 
 #include "sleep_manager.h"

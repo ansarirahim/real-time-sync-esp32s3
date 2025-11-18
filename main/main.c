@@ -1,16 +1,29 @@
 /**
- * ESP-NOW RTC Synchronization Project
- * Main Application Entry Point
+ * @file main.c
+ * @brief ESP-NOW RTC Synchronization - Main Application
  *
- * Milestone 2: Firmware Implementation
+ * Main application entry point for ESP32-S3 wireless sensor network with
+ * RTC-based time synchronization. Implements both gateway and sensor node
+ * roles with deep sleep power management and ESP-NOW communication.
  *
- * Target: ESP32-S3
- * Framework: ESP-IDF v5.x
+ * @details
+ * - Gateway Mode: Broadcasts time sync, receives sensor data, manages network
+ * - Sensor Mode: Wakes on RTC alarm, syncs time, transmits data, sleeps
+ * - Power Management: Deep sleep with RTC alarm wake (< 20 µA)
+ * - Communication: ESP-NOW protocol for low-latency wireless sync
  *
- * Author: Abdul Raheem Ansari
- * Email: ansarirahim1@gmail.com
- * Date: 2024-11-18
- * Version: 1.0.0-M2
+ * @author A.R. Ansari
+ * @email ansarirahim1@gmail.com
+ * @date November 18, 2024
+ * @version 1.0.0
+ *
+ * @contact
+ * WhatsApp: +919024304833
+ * LinkedIn: https://www.linkedin.com/in/abdul-raheem-ansari-a6871320/
+ *
+ * @copyright Copyright (c) 2024 A.R. Ansari. All rights reserved.
+ *
+ * @note Target: ESP32-S3, Framework: ESP-IDF v5.5.1+
  */
 
 #include <stdio.h>

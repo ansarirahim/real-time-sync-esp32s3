@@ -1,10 +1,21 @@
 /**
  * @file espnow_sync.c
- * @brief ESP-NOW Time Synchronization Implementation
- * 
- * @author Abdul Raheem Ansari
+ * @brief ESP-NOW Time Synchronization Protocol Implementation
+ *
+ * This file implements the ESP-NOW based time synchronization protocol for
+ * wireless sensor networks. Handles time sync packets, sensor data transmission,
+ * and peer management for gateway and sensor nodes.
+ *
+ * @author A.R. Ansari
  * @email ansarirahim1@gmail.com
- * @date 2024-11-18
+ * @date November 18, 2024
+ * @version 1.0.0
+ *
+ * @contact
+ * WhatsApp: +919024304833
+ * LinkedIn: https://www.linkedin.com/in/abdul-raheem-ansari-a6871320/
+ *
+ * @copyright Copyright (c) 2024 A.R. Ansari. All rights reserved.
  */
 
 #include "espnow_sync.h"
