@@ -6,7 +6,7 @@ cmake_minimum_required(VERSION 3.16)
 
 # Project version
 set(PROJECT_VER "1.0.0")
-set(PROJECT_VER_MILESTONE "M1")
+set(PROJECT_VER_MILESTONE "M2")
 
 # Include ESP-IDF build system
 include($ENV{IDF_PATH}/tools/cmake/project.cmake)

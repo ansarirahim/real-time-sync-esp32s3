@@ -1,7 +1,7 @@
 idf_component_register(
-    SRCS 
+    SRCS
         "main.c"
-    INCLUDE_DIRS 
+    INCLUDE_DIRS
         "."
     REQUIRES
         driver
@@ -9,5 +9,8 @@ idf_component_register(
         nvs_flash
         esp_timer
         esp_pm
+        rtc_driver
+        espnow_sync
+        sleep_manager
 )
 
