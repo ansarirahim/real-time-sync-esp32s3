@@ -1,11 +1,16 @@
 # Milestone 1: Hardware Analysis Report
 
+**Developer:** Abdul Raheem Ansari
+**Email:** ansarirahim1@gmail.com | **WhatsApp:** +91 9024304883
+**LinkedIn:** [linkedin.com/in/abdul-raheem-ansari-a6871320](https://www.linkedin.com/in/abdul-raheem-ansari-a6871320/)
+
+---
+
 ## ESP32-S3 Hardware Analysis for RTC Integration
 
-**Project:** ESP-NOW RTC Synchronization System  
-**Target Hardware:** ESP32-S3  
-**Date:** 2024-11-18  
-**Author:** Abdul Raheem Ansari  
+**Project:** ESP-NOW RTC Synchronization System
+**Target Hardware:** ESP32-S3
+**Date:** 2024-11-18
 **Version:** 1.0.0-M1
 
 ---

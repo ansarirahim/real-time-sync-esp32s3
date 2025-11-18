@@ -1,14 +1,19 @@
 # Milestone 1: Review & RTC Recommendation
 
+**Developer:** Abdul Raheem Ansari
+**Email:** ansarirahim1@gmail.com | **WhatsApp:** +91 9024304883
+**LinkedIn:** [linkedin.com/in/abdul-raheem-ansari-a6871320](https://www.linkedin.com/in/abdul-raheem-ansari-a6871320/)
+
+---
+
 ## Summary Report
 
-**Project:** ESP-NOW RTC Synchronization System  
-**Milestone:** M1 - Hardware Analysis & RTC Recommendation  
-**Duration:** 2 days  
-**Cost:** $40  
-**Status:** COMPLETE  
-**Date:** 2024-11-18  
-**Author:** Abdul Raheem Ansari
+**Project:** ESP-NOW RTC Synchronization System
+**Milestone:** M1 - Hardware Analysis & RTC Recommendation
+**Duration:** 2 days
+**Cost:** $40
+**Status:** COMPLETE
+**Date:** 2024-11-18
 
 ---
 

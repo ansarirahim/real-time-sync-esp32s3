@@ -1,10 +1,15 @@
 # Milestone 1: Power Analysis and Battery Life Projection
 
+**Developer:** Abdul Raheem Ansari
+**Email:** ansarirahim1@gmail.com | **WhatsApp:** +91 9024304883
+**LinkedIn:** [linkedin.com/in/abdul-raheem-ansari-a6871320](https://www.linkedin.com/in/abdul-raheem-ansari-a6871320/)
+
+---
+
 ## Detailed Power Consumption Analysis
 
-**Project:** ESP-NOW RTC Synchronization System  
-**Date:** 2024-11-18  
-**Author:** Abdul Raheem Ansari  
+**Project:** ESP-NOW RTC Synchronization System
+**Date:** 2024-11-18
 **Version:** 1.0.0-M1
 
 ---

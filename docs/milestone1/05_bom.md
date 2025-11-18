@@ -1,10 +1,15 @@
 # Milestone 1: Bill of Materials (BOM)
 
+**Developer:** Abdul Raheem Ansari
+**Email:** ansarirahim1@gmail.com | **WhatsApp:** +91 9024304883
+**LinkedIn:** [linkedin.com/in/abdul-raheem-ansari-a6871320](https://www.linkedin.com/in/abdul-raheem-ansari-a6871320/)
+
+---
+
 ## Complete Component List with Suppliers and Costs
 
-**Project:** ESP-NOW RTC Synchronization System  
-**Date:** 2024-11-18  
-**Author:** Abdul Raheem Ansari  
+**Project:** ESP-NOW RTC Synchronization System
+**Date:** 2024-11-18
 **Version:** 1.0.0-M1
 
 ---

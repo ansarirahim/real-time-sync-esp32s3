@@ -1,5 +1,12 @@
 # ESP-NOW RTC Synchronization Project
 
+**Developer:** Abdul Raheem Ansari
+**Email:** ansarirahim1@gmail.com | **WhatsApp:** +91 9024304883
+**LinkedIn:** [linkedin.com/in/abdul-raheem-ansari-a6871320](https://www.linkedin.com/in/abdul-raheem-ansari-a6871320/)
+**GitHub:** [github.com/ansarirahim/real-time-sync-esp32s3](https://github.com/ansarirahim/real-time-sync-esp32s3)
+
+---
+
 Real-time clock synchronization system for ESP32-S3 nodes using external RTC modules and ESP-NOW protocol.
 
 ## Project Overview
@@ -151,10 +158,15 @@ See `docs/milestone3/test_plan.md` for detailed test procedures.
 
 Proprietary - Client Project for Orbikey Bilisim (Ridvan)
 
-## Author
+## Contact & Support
 
-Abdul Raheem Ansari
-Contact: [Your contact information]
+**Abdul Raheem Ansari**
+Embedded Systems Engineer | IoT Solutions Developer
+
+- **Email:** ansarirahim1@gmail.com
+- **WhatsApp:** +91 9024304883
+- **LinkedIn:** [linkedin.com/in/abdul-raheem-ansari-a6871320](https://www.linkedin.com/in/abdul-raheem-ansari-a6871320/)
+- **GitHub:** [github.com/ansarirahim](https://github.com/ansarirahim)
 
 ## References
 
